@@ -15,7 +15,11 @@
 <body>
     <main class="page">
         <div class="top-buttons">
-            <button class="top-button" id="all-authors-btn">all authors</button>
+            <div>
+                <a class="top-button" id="all-authors-btn">all authors</a>
+                <a class="top-button" id="back-to-quotes-btn">go back to quotes</a>
+            </div>
+
 
             <button class="top-button" id="random-btn">
                 random <span class="material-symbols-outlined top-icon">
@@ -25,6 +29,7 @@
         </div>
 
         <div class="grid-container">
+            <div class="loader" id="quote-loader">Loading...</div>
             <div class="quote"></div>
 
             <div class="quote-author-container">
@@ -35,6 +40,7 @@
 
         <div class="all-authors-container">
             <h2 class="top-10-caption">Top 10 people with the most quotes:</h2>
+            <div class="loader" id="all-authors-loader">Loading...</div>
         </div>
 
         <footer>
@@ -43,8 +49,8 @@
             </p>
         </footer>
     </main>
-
+    <script src="../js/quote-generator.js"></script>
 </body>
-<script src="../js/quote-generator.js"></script>
+
 
 </html>
