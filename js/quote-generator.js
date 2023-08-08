@@ -77,23 +77,23 @@ async function setAllAuthors() {
   }
 }
 
-backToQuotesBtn.style.visibility = "hidden";
+backToQuotesBtn.style.display = "none";
 
 allAuthorsBtn.addEventListener("click", () => {
   if (!allAuthorsFetchCalled) {
     setAllAuthors();
     allAuthorsFetchCalled = true;
   }
-  allAuthorsBtn.style.visibility = "hidden";
-  backToQuotesBtn.style.visibility = "visible";
+  allAuthorsBtn.style.display = "none";
+  backToQuotesBtn.style.display = "block";
   gridContainer.style.display = "none";
   topButtons.style.marginBottom = "5vh";
   allAuthorsContainer.style.display = "flex";
 });
 
 backToQuotesBtn.addEventListener("click", () => {
-  backToQuotesBtn.style.visibility = "hidden";
-  allAuthorsBtn.style.visibility = "visible";
+  backToQuotesBtn.style.display = "none";
+  allAuthorsBtn.style.display = "block";
   allAuthorsContainer.style.display = "none";
   topButtons.style.marginBottom = "15vh";
   gridContainer.style.display = "grid";
