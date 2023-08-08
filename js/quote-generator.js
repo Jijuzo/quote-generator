@@ -84,6 +84,7 @@ allAuthorsBtn.addEventListener("click", () => {
     setAllAuthors();
     allAuthorsFetchCalled = true;
   }
+  randomBtn.style.display = "none";
   allAuthorsBtn.style.display = "none";
   backToQuotesBtn.style.display = "block";
   gridContainer.style.display = "none";
@@ -94,6 +95,7 @@ allAuthorsBtn.addEventListener("click", () => {
 backToQuotesBtn.addEventListener("click", () => {
   backToQuotesBtn.style.display = "none";
   allAuthorsBtn.style.display = "block";
+  randomBtn.style.display = "block";
   allAuthorsContainer.style.display = "none";
   topButtons.style.marginBottom = "15vh";
   gridContainer.style.display = "grid";
