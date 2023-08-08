@@ -22,19 +22,16 @@
   font-weight: var(--font-size-default);
   font-size: var(--font-size-default);
   border: none;
+  padding: 0px;
   color: var(--color-grey);
   background-color: #ffffff;
   box-shadow: 0 4px 2px -2px gray;
   cursor: pointer;
 }
 
-.active {
-  border-bottom: solid 2px blue;
-}
-
 .top-icon {
-  vertical-align: bottom;
-  font-size: var(--font-size-default);
+  vertical-align: middle;
+  font-size: 20px;
 }
 
 .grid-container {
@@ -44,6 +41,15 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10vh;
+}
+
+.loader {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  font-size: var(--font-size-default);
+  font-weight: var(--font-size-default);
+  color: var(--color-grey);
 }
 
 .quote {
@@ -156,11 +162,21 @@ footer {
     margin-top: 2vh;
   }
 
-  .top-10 {
+  .top-10-caption {
     font-size: 18px;
   }
 
   .all-authors-item-content {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 350px) {
+  .top-10-caption {
+    font-size: 14px;
+  }
+
+  .all-authors-item-content {
+    font-size: 12px;
   }
 }
