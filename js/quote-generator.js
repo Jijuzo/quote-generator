@@ -10,6 +10,14 @@ const topButtons = document.querySelector(".top-buttons");
 const footer = document.querySelector("footer");
 const quoteLoader = document.querySelector("#quote-loader");
 const allAuthorsLoader = document.querySelector("#all-authors-loader");
+const topTenCaption = document.querySelector(".top-10-caption");
+const baseUrl = "https://api.quotable.io";
+const randomQuoteUrl = new URL("/random", baseUrl);
+const allAuthorsUrl = new URL(
+  "/authors?sortBy=quoteCount&order=desc&limit=10",
+  baseUrl
+);
+
 let allAuthorsFetchCalled = false;
 
 async function getRandomQuote() {
@@ -18,7 +26,7 @@ async function getRandomQuote() {
     quote.style.display = "none";
     quoteAuthor.style.display = "none";
     quoteGenre.style.display = "none";
-    const promise = await fetch("https://api.quotable.io/random");
+    const promise = await fetch(randomQuoteUrl);
     if (!promise.ok) {
       throw new Error(`HTTP error! Status: ${promise.status}`);
     }
@@ -30,15 +38,19 @@ async function getRandomQuote() {
   } catch (error) {
     console.error("Error:", error);
     quoteLoader.style.display = "none";
+    quote.style.display = "block";
+    quote.style.color = "red";
+    quote.textContent =
+      "An error occurred while generating your quote. Please try again later.";
     throw error;
   }
 }
 
 async function setRandomQuote() {
-  const randomQuote = await getRandomQuote();
-  quote.textContent = randomQuote.content;
-  quoteAuthor.textContent = randomQuote.author;
-  quoteGenre.textContent = randomQuote.tags.join(", ");
+  const { content, author, tags } = await getRandomQuote();
+  quote.textContent = content;
+  quoteAuthor.textContent = author;
+  quoteGenre.textContent = tags;
 }
 
 randomBtn.addEventListener("click", setRandomQuote);
@@ -47,9 +59,7 @@ setRandomQuote();
 async function getAllAuthors() {
   try {
     allAuthorsLoader.style.display = "flex";
-    const promise = await fetch(
-      `https://api.quotable.io/authors?sortBy=quoteCount&order=desc&limit=10`
-    );
+    const promise = await fetch(allAuthorsUrl);
     if (!promise.ok) {
       throw new Error(`HTTP error! Status: ${promise.status}`);
     }
@@ -58,21 +68,21 @@ async function getAllAuthors() {
   } catch (error) {
     console.error("Error:", error);
     allAuthorsLoader.style.display = "none";
+    topTenCaption.style.color = "red";
+    topTenCaption.textContent =
+      "An error occurred while generating quotes authors. Please try again later.";
     throw error;
   }
 }
 
 async function setAllAuthors() {
-  const authors = await getAllAuthors();
-  let count = 1;
-  for (let oneAuthor of authors.results) {
+  const { results } = await getAllAuthors();
+  for (let authorEntry of results.entries()) {
+    const [idx, author] = authorEntry;
+    const authorNumber = idx + 1;
     const authorContainer = document.createElement("div");
     authorContainer.classList.add("all-authors-item");
-    const authorInfo = document.createElement("h3");
-    authorInfo.classList.add("all-authors-item-content");
-    authorInfo.textContent = `${count}. ${oneAuthor.name} has ${oneAuthor.quoteCount} great qoutes`;
-    count++;
-    authorContainer.appendChild(authorInfo);
+    authorContainer.textContent = `${authorNumber}. ${author.name} has ${author.quoteCount} great qoutes`;
     allAuthorsContainer.appendChild(authorContainer);
   }
 }
@@ -86,17 +96,17 @@ allAuthorsBtn.addEventListener("click", () => {
   }
   randomBtn.style.display = "none";
   allAuthorsBtn.style.display = "none";
-  backToQuotesBtn.style.display = "block";
   gridContainer.style.display = "none";
+  backToQuotesBtn.style.display = "block";
   topButtons.style.marginBottom = "5vh";
   allAuthorsContainer.style.display = "flex";
 });
 
 backToQuotesBtn.addEventListener("click", () => {
   backToQuotesBtn.style.display = "none";
+  allAuthorsContainer.style.display = "none";
   allAuthorsBtn.style.display = "block";
   randomBtn.style.display = "block";
-  allAuthorsContainer.style.display = "none";
   topButtons.style.marginBottom = "15vh";
   gridContainer.style.display = "grid";
 });
