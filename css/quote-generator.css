@@ -94,8 +94,15 @@
   display: none;
 }
 
+.all-authors-item {
+  font-family: var(--font-family-default);
+  font-weight: var(--font-size-default);
+  font-size: 20px;
+  margin: 10px;
+}
+
 .top-10-caption {
-  margin: 0px;
+  margin: 5px;
 }
 
 footer {
@@ -128,7 +135,7 @@ footer {
     margin-bottom: 5px;
   }
 
-  .all-authors-item-content {
+  .all-authors-item {
     margin-bottom: 0px;
   }
 }
@@ -141,10 +148,6 @@ footer {
   .quote-author {
     font-size: 16px;
   }
-
-  .all-authors-item-content {
-    font-size: 20px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -152,8 +155,8 @@ footer {
     max-width: 50vw;
   }
 
-  .all-authors-item-content {
-    font-size: 20px;
+  .all-authors-item {
+    font-size: 18px;
   }
 }
 
@@ -176,7 +179,7 @@ footer {
     font-size: 14px;
   }
 
-  .all-authors-item-content {
+  .all-authors-item {
     font-size: 12px;
   }
 }
