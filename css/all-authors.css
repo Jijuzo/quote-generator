@@ -1,0 +1,38 @@
+.all-authors-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* display: none; */
+}
+
+.all-authors-item {
+  font-family: var(--font-family-default);
+  font-weight: var(--font-weight-default);
+  font-size: 20px;
+  margin: 10px;
+}
+
+@media (max-width: 1240px) {
+  .all-authors-item {
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 905px) {
+  .all-authors-item {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .all-authors-item {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 350px) {
+  .all-authors-item {
+    font-size: 12px;
+  }
+}

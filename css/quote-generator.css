@@ -4,7 +4,9 @@
   --font-weight-default: 500;
   --font-weight-bold: 700;
   --color-grey: #4f4f4f;
+  --color-yellow: #f7df94;
   --color-light-grey: #b9bdcf;
+  --color-white: #ffffff;
 }
 
 .page {
@@ -19,13 +21,14 @@
 
 .top-button {
   font-family: var(--font-family-default);
-  font-weight: var(--font-size-default);
+  font-weight: var(--font-weight-default);
   font-size: var(--font-size-default);
+  text-decoration: none;
   border: none;
   padding: 0px;
   color: var(--color-grey);
-  background-color: #ffffff;
-  box-shadow: 0 4px 2px -2px gray;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 2px -2px var(--color-grey);
   cursor: pointer;
 }
 
@@ -48,17 +51,17 @@
   display: none;
   justify-content: center;
   font-size: var(--font-size-default);
-  font-weight: var(--font-size-default);
+  font-weight: var(--font-weight-default);
   color: var(--color-grey);
 }
 
 .quote {
   font-family: var(--font-family-default);
-  font-weight: var(--font-size-default);
+  font-weight: var(--font-weight-default);
   font-size: 36px;
   flex-basis: 100%;
   padding-left: 5vw;
-  border-left: solid 0.5vw #f7df94;
+  border-left: solid 0.5vw var(--color-yellow);
 }
 
 .quote-author-container {
@@ -70,7 +73,7 @@
 
 .quote-author {
   font-family: var(--font-family-default);
-  font-weight: var(--font-size-default);
+  font-weight: var(--font-weight-default);
   font-size: var(--font-size-default);
   color: var(--color-grey);
   margin-top: 0px;
@@ -80,25 +83,10 @@
 
 .quote-genre {
   font-family: var(--font-family-default);
-  font-weight: var(--font-size-default);
+  font-weight: var(--font-weight-default);
   font-size: 14px;
   color: #828282;
   margin: 0px;
-}
-
-.all-authors-container {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  display: none;
-}
-
-.all-authors-item {
-  font-family: var(--font-family-default);
-  font-weight: var(--font-size-default);
-  font-size: 20px;
-  margin: 10px;
 }
 
 .top-10-caption {
@@ -111,13 +99,13 @@ footer {
   width: 100%;
   height: 2.5rem;
   font-size: 14px;
-  font-weight: var(--font-size-default);
+  font-weight: var(--font-weight-default);
   text-align: center;
   color: var(--color-light-grey);
 }
 
 .link {
-  --font-weight-bold: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--color-light-grey);
 }
 
@@ -133,10 +121,6 @@ footer {
   .quote-author {
     font-size: 20px;
     margin-bottom: 5px;
-  }
-
-  .all-authors-item {
-    margin-bottom: 0px;
   }
 }
 
@@ -154,10 +138,6 @@ footer {
   .grid-container {
     max-width: 50vw;
   }
-
-  .all-authors-item {
-    font-size: 18px;
-  }
 }
 
 @media (max-width: 400px) {
@@ -169,7 +149,7 @@ footer {
     font-size: 18px;
   }
 
-  .all-authors-item-content {
+  .all-authors-item {
     font-size: 14px;
   }
 }
