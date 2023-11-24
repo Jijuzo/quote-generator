@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,500,0,-25" />
+    <link rel="stylesheet" href="../css/quote-generator.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <title>Quote-generator</title>
+</head>
+
+<body>
+    <main class="page">
+        <div class="top-buttons">
+            <div>
+                <a class="top-button" id="all-authors-link" href="./all-authors.html">all authors</a>
+            </div>
+
+            <button class="top-button" id="random-btn">
+                random <span class="material-symbols-outlined top-icon">
+                    autorenew
+                </span>
+            </button>
+        </div>
+
+        <div class="grid-container">
+            <div class="loader" id="quote-loader">Loading...</div>
+            <div class="quote"></div>
+
+            <div class="quote-author-container">
+                <p class="quote-author"></p>
+                <p class="quote-genre"></p>
+            </div>
+        </div>
+        <footer>
+            <p>Created by <strong><a class="link" href="https://github.com/Jijuzo">Jijuzo</a></strong> -
+                devChallenges.io
+            </p>
+        </footer>
+    </main>
+    <script src="../js/quote-generator.js"></script>
+</body>
+
+
+</html>
