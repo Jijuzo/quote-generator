@@ -9,10 +9,10 @@
   --font-size-quote-author-max-width-1240px: 20px;
   --font-size-quote-author-max-width-905px: 16px;
   --font-size-quote-genre: 14px;
-  --font-size-top-10-caption-max-width-400px: 18px;
-  --font-size-top-10-caption-max-width-350px: 14px;
-  --font-size-all-authors-item-max-width-400px: 14px;
-  --font-size-all-authors-item-max-width-350px: 12px;
+  --font-size-top-ten-caption-max-width-400px: 18px;
+  --font-size-top-ten-caption-max-width-350px: 14px;
+  --font-size-top-ten-authors-item-max-width-400px: 14px;
+  --font-size-top-ten-authors-item-max-width-350px: 12px;
   --font-size-footer: 14px;
   --color-gray: #4f4f4f;
   --color-yellow: #f7df94;
@@ -100,7 +100,7 @@
   margin: 0px;
 }
 
-.top-10-caption {
+.top-ten-caption {
   margin: 5px;
 }
 
@@ -156,20 +156,20 @@ footer {
     margin-top: 2vh;
   }
 
-  .top-10-caption {
-    font-size: var(--font-size-top-10-caption-max-width-400px);
+  .top-ten-caption {
+    font-size: var(--font-size-top-ten-caption-max-width-400px);
   }
 
-  .all-authors-item {
-    font-size: var(--font-size-all-authors-item-max-width-400px);
+  .top-ten-authors-item {
+    font-size: var(--font-size-top-ten-authors-item-max-width-400px);
   }
 }
 
 @media (max-width: 350px) {
-  .top-10-caption {
-    font-size: var(--font-size-all-authors-item-max-width-350px);
+  .top-ten-caption {
+    font-size: var(--font-size-top-ten-authors-item-max-width-350px);
   }
-  .all-authors-item {
-    font-size: var(--font-size-all-authors-item-max-width-350px);
+  .top-ten-authors-item {
+    font-size: var(--font-size-top-ten-authors-item-max-width-350px);
   }
 }
