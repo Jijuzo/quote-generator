@@ -12,7 +12,7 @@ type RandomQuote = {
   tags: string;
 };
 
-async function getRandomQuote<T extends Record<string, unknown>>() {
+async function getRandomQuote(): Promise<RandomQuote> {
   try {
     quoteLoader.style.display = "flex";
     quote.style.display = "none";
@@ -26,7 +26,7 @@ async function getRandomQuote<T extends Record<string, unknown>>() {
     quote.style.display = "block";
     quoteAuthor.style.display = "block";
     quoteGenre.style.display = "block";
-    return (await promise.json()) as T;
+    return await promise.json();
   } catch (error) {
     console.error("Error:", error);
     quoteLoader.style.display = "none";
@@ -39,7 +39,7 @@ async function getRandomQuote<T extends Record<string, unknown>>() {
 }
 
 async function setRandomQuote() {
-  const { content, author, tags } = await getRandomQuote<RandomQuote>();
+  const { content, author, tags } = await getRandomQuote();
   quote.textContent = content;
   quoteAuthor.textContent = author;
   quoteGenre.textContent = tags;
