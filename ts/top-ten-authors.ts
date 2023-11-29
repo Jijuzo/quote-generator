@@ -1,4 +1,4 @@
-import { baseUrl } from "./quote-generator.js";
+import { baseUrl } from "./baseUrl.js";
 const topTenAuthorsBody = document.querySelector(
   "#top-ten-authors-body"
 ) as HTMLElement;

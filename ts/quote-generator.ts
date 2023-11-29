@@ -1,9 +1,10 @@
+import { baseUrl } from "./baseUrl.js";
+
 const randomBtn = document.querySelector("#random-btn");
 const quote = document.querySelector(".quote") as HTMLElement;
 const quoteAuthor = document.querySelector(".quote-author") as HTMLElement;
 const quoteGenre = document.querySelector(".quote-genre") as HTMLElement;
 const quoteLoader = document.querySelector("#quote-loader") as HTMLElement;
-export const baseUrl = "https://api.quotable.io";
 const randomQuoteUrl = new URL("/random", baseUrl);
 
 type RandomQuote = {
