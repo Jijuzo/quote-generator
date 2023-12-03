@@ -9,6 +9,7 @@ const topTenAuthorsContainer = document.querySelector(
 const topTenAuthorsLoader = document.querySelector(
   "#top-ten-authors-loader"
 ) as HTMLElement;
+const topTenCaption = document.querySelector(".top-ten-caption") as HTMLElement;
 const topTenAuthorsUrl = new URL("/authors", baseUrl);
 topTenAuthorsUrl.searchParams.append("sortBy", "quoteCount");
 topTenAuthorsUrl.searchParams.append("order", "desc");
@@ -28,7 +29,9 @@ async function getTopTenAuthors(): Promise<TopTenAuthors> {
     return await promise.json();
   } catch (error) {
     console.error("Error fetching authors:", error);
-    topTenAuthorsLoader.style.display = "none";
+    topTenCaption.textContent =
+      "An error occurred while generating top ten authors. Please  try again later.";
+    topTenCaption.style.color = "red";
     throw error;
   } finally {
     topTenAuthorsLoader.style.display = "none";
@@ -38,14 +41,14 @@ async function getTopTenAuthors(): Promise<TopTenAuthors> {
 async function setTopTenAuthors() {
   try {
     const { results } = await getTopTenAuthors();
-    for (let idx = 0; idx < results.length; idx++) {
-      const author = results[idx];
+    results.forEach((result, idx) => {
+      const author = result;
       const authorNumber = idx + 1;
       const authorContainer = document.createElement("div");
       authorContainer.classList.add("top-ten-authors-item");
       authorContainer.textContent = `${authorNumber}. ${author.name} has ${author.quoteCount} famous quotes`;
       topTenAuthorsContainer.appendChild(authorContainer);
-    }
+    });
   } catch (error) {
     console.error("Error setting authors:", error);
   }
