@@ -1,12 +1,19 @@
+import { baseUrl } from "./baseUrl.js";
+
 const randomBtn = document.querySelector("#random-btn");
-const quote = document.querySelector(".quote");
-const quoteAuthor = document.querySelector(".quote-author");
-const quoteGenre = document.querySelector(".quote-genre");
-const quoteLoader = document.querySelector("#quote-loader");
-const baseUrl = "https://api.quotable.io";
+const quote = document.querySelector(".quote") as HTMLElement;
+const quoteAuthor = document.querySelector(".quote-author") as HTMLElement;
+const quoteGenre = document.querySelector(".quote-genre") as HTMLElement;
+const quoteLoader = document.querySelector("#quote-loader") as HTMLElement;
 const randomQuoteUrl = new URL("/random", baseUrl);
 
-async function getRandomQuote() {
+type RandomQuote = {
+  content: string;
+  author: string;
+  tags: string;
+};
+
+async function getRandomQuote(): Promise<RandomQuote> {
   try {
     quoteLoader.style.display = "flex";
     quote.style.display = "none";
@@ -17,18 +24,18 @@ async function getRandomQuote() {
       throw new Error(`HTTP error! Status: ${promise.status}`);
     }
     quoteLoader.style.display = "none";
-    quote.style.display = "block";
     quoteAuthor.style.display = "block";
     quoteGenre.style.display = "block";
     return await promise.json();
   } catch (error) {
     console.error("Error:", error);
-    quoteLoader.style.display = "none";
-    quote.style.display = "block";
     quote.style.color = "red";
     quote.textContent =
       "An error occurred while generating your quote. Please try again later.";
     throw error;
+  } finally {
+    quote.style.display = "block";
+    quoteLoader.style.display = "none";
   }
 }
 
@@ -39,5 +46,5 @@ async function setRandomQuote() {
   quoteGenre.textContent = tags;
 }
 
-randomBtn.addEventListener("click", setRandomQuote);
+if (randomBtn) randomBtn.addEventListener("click", setRandomQuote);
 setRandomQuote();
