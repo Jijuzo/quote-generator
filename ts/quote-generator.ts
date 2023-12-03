@@ -24,18 +24,18 @@ async function getRandomQuote(): Promise<RandomQuote> {
       throw new Error(`HTTP error! Status: ${promise.status}`);
     }
     quoteLoader.style.display = "none";
-    quote.style.display = "block";
     quoteAuthor.style.display = "block";
     quoteGenre.style.display = "block";
     return await promise.json();
   } catch (error) {
     console.error("Error:", error);
-    quoteLoader.style.display = "none";
-    quote.style.display = "block";
     quote.style.color = "red";
     quote.textContent =
       "An error occurred while generating your quote. Please try again later.";
     throw error;
+  } finally {
+    quote.style.display = "block";
+    quoteLoader.style.display = "none";
   }
 }
 
